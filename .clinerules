@@ -1,3 +1,10 @@
+# Cline Rules — Burgos 2026
+
+> El contenido de `STRUCTURE.md` está incluido a continuación para que esté disponible implícitamente en cada conversación con Cline, sin necesidad de adjuntar el archivo.
+> Si `STRUCTURE.md` se modifica, actualiza también este archivo (`.clinerules`) para mantenerlos sincronizados.
+
+---
+
 # Estructura de `index.html`
 
 > Referencia rápida de la estructura, componentes, estilos y funciones del `index.html`.
@@ -96,7 +103,7 @@ toggleActivity(button)
 
 toggleAllActivities(button)
   // Si alguna actividad está cerrada → abre todas; si todas abiertas → cierra todas
-  // Cambia texto del botón: "Contraer todo" / "Desplejar todo"
+  // Cambia texto del botón: "Contraer todo" / "Desplegar todo"
 
 copyAddress(address, button)
   // Copia dirección al portapapeles (navigator.clipboard o fallback execCommand)
