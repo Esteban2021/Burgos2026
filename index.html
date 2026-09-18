@@ -1,0 +1,1124 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Burgos 2026</title>
+
+  <style>
+    :root {
+      --background: #f5f5f3;
+      --card: #ffffff;
+      --text: #202124;
+      --muted: #6b6b6b;
+      --border: #e5e5e5;
+      --accent: #334e68;
+      --accent-light: #edf2f7;
+      --success: #39744a;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+      scroll-padding-top: 70px;
+    }
+
+    body {
+      margin: 0;
+      background: var(--background);
+      color: var(--text);
+      font-family:
+        -apple-system,
+        BlinkMacSystemFont,
+        "Segoe UI",
+        Roboto,
+        Helvetica,
+        Arial,
+        sans-serif;
+      font-size: 17px;
+      line-height: 1.55;
+    }
+
+    a {
+      color: inherit;
+    }
+
+    .page {
+      width: 100%;
+      max-width: 600px;
+      margin: 0 auto;
+      background: var(--background);
+      min-height: 100vh;
+    }
+
+    /* =========================
+       CABECERA
+       ========================= */
+
+    .hero {
+      padding: 42px 22px 28px;
+      text-align: center;
+      background: var(--card);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .hero h1 {
+      margin: 0;
+      font-size: 2rem;
+      letter-spacing: 0.04em;
+      font-weight: 750;
+    }
+
+    .hero p {
+      margin: 6px 0 0;
+      color: var(--muted);
+      font-size: 1rem;
+    }
+
+    /* =========================
+       NAVEGACIÓN
+       ========================= */
+
+    .top-nav {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      display: flex;
+      background: rgba(255, 255, 255, 0.96);
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid var(--border);
+      overflow-x: auto;
+      scrollbar-width: none;
+    }
+
+    .top-nav::-webkit-scrollbar {
+      display: none;
+    }
+
+    .top-nav a {
+      flex: 1 0 auto;
+      min-width: 78px;
+      padding: 13px 10px;
+      text-align: center;
+      text-decoration: none;
+      color: var(--muted);
+      font-size: 0.9rem;
+      font-weight: 650;
+      white-space: nowrap;
+    }
+
+    .top-nav a:hover,
+    .top-nav a:focus {
+      color: var(--accent);
+      background: var(--accent-light);
+    }
+
+    /* =========================
+       CONTENIDO
+       ========================= */
+
+    main {
+      padding: 20px 14px 60px;
+    }
+
+    section {
+      margin-bottom: 34px;
+    }
+
+    .section-title {
+      margin: 0 8px 12px;
+      font-size: 1.45rem;
+      font-weight: 750;
+    }
+
+    .section-subtitle {
+      margin: -5px 8px 15px;
+      color: var(--muted);
+      font-size: 0.95rem;
+    }
+
+    /* =========================
+       ALOJAMIENTO RESUMEN
+       ========================= */
+
+    .accommodation-card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 18px;
+      margin-bottom: 34px;
+    }
+
+    .accommodation-header {
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+    }
+
+    .accommodation-icon {
+      width: 42px;
+      height: 42px;
+      border-radius: 12px;
+      background: var(--accent-light);
+      display: grid;
+      place-items: center;
+      flex-shrink: 0;
+    }
+
+    .accommodation-header h2 {
+      margin: 0;
+      font-size: 1.15rem;
+    }
+
+    .accommodation-address {
+      margin: 3px 0 0;
+      color: var(--muted);
+      font-size: 0.95rem;
+    }
+
+    .accommodation-actions {
+      display: flex;
+      gap: 8px;
+      margin-top: 16px;
+    }
+
+    .small-button {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 7px;
+      padding: 9px 12px;
+      border-radius: 10px;
+      background: var(--accent-light);
+      color: var(--accent);
+      text-decoration: none;
+      font-size: 0.9rem;
+      font-weight: 650;
+    }
+
+    /* =========================
+       DÍA
+       ========================= */
+
+    .day-section {
+      scroll-margin-top: 70px;
+    }
+
+    .day-heading {
+      display: flex;
+      align-items: baseline;
+      gap: 9px;
+      margin: 0 8px 14px;
+    }
+
+    .day-number {
+      font-size: 1.45rem;
+      font-weight: 800;
+    }
+
+    .day-name {
+      color: var(--muted);
+      font-size: 0.95rem;
+    }
+
+    /* =========================
+       ACTIVIDADES
+       ========================= */
+
+    .activities {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .activity {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 15px;
+      overflow: hidden;
+    }
+
+    .activity-main {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding: 15px 14px;
+    }
+
+    .activity-time {
+      width: 50px;
+      flex-shrink: 0;
+      font-size: 0.95rem;
+      font-weight: 750;
+      color: var(--accent);
+    }
+
+    .activity-title {
+      flex: 1;
+      min-width: 0;
+      font-size: 1.05rem;
+      font-weight: 700;
+    }
+
+    .activity-actions {
+      display: flex;
+      align-items: center;
+      gap: 4px;
+    }
+
+    .icon-button {
+      width: 40px;
+      height: 40px;
+      display: grid;
+      place-items: center;
+      border: 0;
+      border-radius: 10px;
+      background: transparent;
+      color: var(--muted);
+      cursor: pointer;
+      text-decoration: none;
+      -webkit-tap-highlight-color: transparent;
+    }
+
+    .icon-button:hover,
+    .icon-button:focus {
+      background: var(--accent-light);
+      color: var(--accent);
+    }
+
+    .icon-button svg {
+      width: 21px;
+      height: 21px;
+      stroke: currentColor;
+    }
+
+    .expand-icon {
+      transition: transform 0.2s ease;
+    }
+
+    .activity.open .expand-icon {
+      transform: rotate(180deg);
+    }
+
+    /* =========================
+       INFORMACIÓN DESPLEGABLE
+       ========================= */
+
+    .activity-details {
+      display: none;
+      border-top: 1px solid var(--border);
+      padding: 15px 15px 17px;
+      background: #fcfcfc;
+    }
+
+    .activity.open .activity-details {
+      display: block;
+    }
+
+    .detail-row {
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+      margin-bottom: 12px;
+    }
+
+    .detail-row:last-child {
+      margin-bottom: 0;
+    }
+
+    .detail-icon {
+      width: 21px;
+      height: 21px;
+      flex-shrink: 0;
+      color: var(--muted);
+    }
+
+    .detail-content {
+      flex: 1;
+      min-width: 0;
+    }
+
+    .detail-label {
+      display: block;
+      color: var(--muted);
+      font-size: 0.8rem;
+      margin-bottom: 1px;
+    }
+
+    .detail-value {
+      font-size: 0.95rem;
+    }
+
+    .price {
+      font-weight: 750;
+    }
+
+    .address-actions {
+      display: flex;
+      gap: 8px;
+      margin-top: 8px;
+      flex-wrap: wrap;
+    }
+
+    .detail-button {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      border: 1px solid var(--border);
+      background: white;
+      padding: 7px 10px;
+      border-radius: 9px;
+      text-decoration: none;
+      font-size: 0.85rem;
+      color: var(--accent);
+      cursor: pointer;
+    }
+
+    .copy-message {
+      display: inline-block;
+      margin-left: 5px;
+      color: var(--success);
+      font-size: 0.8rem;
+      opacity: 0;
+      transition: opacity 0.2s;
+    }
+
+    .copy-message.visible {
+      opacity: 1;
+    }
+
+    /* =========================
+       INFO ALOJAMIENTO FINAL
+       ========================= */
+
+    .accommodation-full {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 20px;
+    }
+
+    .placeholder {
+      color: var(--muted);
+      font-size: 0.95rem;
+    }
+
+    /* =========================
+       RESPONSIVE
+       ========================= */
+
+    @media (min-width: 601px) {
+      body {
+        padding: 24px 0;
+      }
+
+      .page {
+        border-radius: 18px;
+        overflow: hidden;
+        box-shadow: 0 8px 35px rgba(0, 0, 0, 0.06);
+      }
+
+      .top-nav {
+        position: sticky;
+      }
+    }
+
+    @media (max-width: 380px) {
+      body {
+        font-size: 16px;
+      }
+
+      .activity-time {
+        width: 45px;
+        font-size: 0.9rem;
+      }
+
+      .activity-title {
+        font-size: 1rem;
+      }
+
+      .icon-button {
+        width: 37px;
+        height: 37px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="page">
+
+    <!-- =========================
+         CABECERA
+         ========================= -->
+
+    <header class="hero">
+      <h1>BURGOS 2026</h1>
+      <p>26 — 28 septiembre</p>
+    </header>
+
+
+    <!-- =========================
+         NAVEGACIÓN
+         ========================= -->
+
+    <nav class="top-nav" aria-label="Navegación">
+      <a href="#dia-26">26 SEP</a>
+      <a href="#dia-27">27 SEP</a>
+      <a href="#dia-28">28 SEP</a>
+      <a href="#alojamiento">⌂</a>
+    </nav>
+
+
+    <main>
+
+      <!-- =========================
+           ALOJAMIENTO RESUMEN
+           ========================= -->
+
+      <section id="alojamiento">
+
+        <div class="accommodation-card">
+
+          <div class="accommodation-header">
+
+            <div class="accommodation-icon">
+              <!-- Casa -->
+              <svg width="23" height="23" viewBox="0 0 24 24"
+                   fill="none" stroke="currentColor" stroke-width="1.8"
+                   stroke-linecap="round" stroke-linejoin="round">
+                <path d="M3 10.5 12 3l9 7.5"></path>
+                <path d="M5 9.5V21h14V9.5"></path>
+                <path d="M9 21v-6h6v6"></path>
+              </svg>
+            </div>
+
+            <div>
+              <h2>Alojamiento</h2>
+              <p class="accommodation-address">
+                Información pendiente
+              </p>
+            </div>
+
+          </div>
+
+          <div class="accommodation-actions">
+
+            <a
+              class="small-button"
+              href="#alojamiento-completo"
+            >
+              Información completa
+            </a>
+
+          </div>
+
+        </div>
+
+      </section>
+
+
+      <!-- =========================
+           26 SEPTIEMBRE
+           ========================= -->
+
+      <section id="dia-26" class="day-section">
+
+        <div class="day-heading">
+          <div class="day-number">26 septiembre</div>
+          <div class="day-name">sábado</div>
+        </div>
+
+
+        <div class="activities">
+
+          <!-- COMIDA -->
+
+          <article class="activity">
+
+            <div class="activity-main">
+
+              <div class="activity-time">
+                14:10
+              </div>
+
+              <div class="activity-title">
+                Restaurante Onírica · Menú Alma de Burgos
+              </div>
+
+              <div class="activity-actions">
+
+                <!-- Google Maps -->
+                <a
+                  class="icon-button"
+                  href="https://maps.app.goo.gl/EKAqB9awSQuuUSrH9"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label="Abrir en Google Maps"
+                >
+                  <svg viewBox="0 0 24 24"
+                       fill="none"
+                       stroke-width="1.8"
+                       stroke-linecap="round"
+                       stroke-linejoin="round">
+                    <path d="M20 10c0 5-8 11-8 11S4 15 4 10a8 8 0 1 1 16 0Z"></path>
+                    <circle cx="12" cy="10" r="2.5"></circle>
+                  </svg>
+                </a>
+
+                <!-- Expandir -->
+                <button
+                  class="icon-button"
+                  type="button"
+                  aria-label="Mostrar información"
+                  onclick="toggleActivity(this)"
+                >
+                  <svg
+                    class="expand-icon"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke-width="1.8"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                  >
+                    <path d="m6 9 6 6 6-6"></path>
+                  </svg>
+                </button>
+
+              </div>
+
+            </div>
+
+
+            <div class="activity-details">
+
+              <!-- Precio -->
+
+              <div class="detail-row">
+
+                <svg class="detail-icon"
+                     viewBox="0 0 24 24"
+                     fill="none"
+                     stroke="currentColor"
+                     stroke-width="1.8"
+                     stroke-linecap="round"
+                     stroke-linejoin="round">
+                  <circle cx="12" cy="12" r="9"></circle>
+                  <path d="M15 8.5c-.7-.6-1.7-1-3-1-1.7 0-3 .8-3 2s1.3 2 3 2 3 .8 3 2-1.3 2-3 2c-1.3 0-2.3-.4-3-1"></path>
+                  <path d="M12 6v12"></path>
+                </svg>
+
+                <div class="detail-content">
+                  <span class="detail-label">Precio total</span>
+                  <span class="detail-value price">60 €</span>
+                </div>
+
+              </div>
+
+
+              <!-- Dirección -->
+
+              <div class="detail-row">
+
+                <svg class="detail-icon"
+                     viewBox="0 0 24 24"
+                     fill="none"
+                     stroke="currentColor"
+                     stroke-width="1.8"
+                     stroke-linecap="round"
+                     stroke-linejoin="round">
+                  <path d="M20 10c0 5-8 11-8 11S4 15 4 10a8 8 0 1 1 16 0Z"></path>
+                  <circle cx="12" cy="10" r="2.5"></circle>
+                </svg>
+
+                <div class="detail-content">
+
+                  <span class="detail-label">
+                    Dirección
+                  </span>
+
+                  <span class="detail-value">
+                    Calle San Lorenzo, 33, 09003 Burgos
+                  </span>
+
+                  <div class="address-actions">
+
+                    <button
+                      class="detail-button"
+                      type="button"
+                      onclick="copyAddress(
+                        'Calle San Lorenzo, 33, 09003 Burgos',
+                        this
+                      )"
+                    >
+                      <!-- Copiar -->
+                      <svg width="16" height="16"
+                           viewBox="0 0 24 24"
+                           fill="none"
+                           stroke="currentColor"
+                           stroke-width="1.8"
+                           stroke-linecap="round"
+                           stroke-linejoin="round">
+                        <rect x="9" y="9" width="11" height="11" rx="2"></rect>
+                        <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
+                      </svg>
+
+                      Copiar dirección
+                    </button>
+
+                    <span class="copy-message">
+                      Copiado
+                    </span>
+
+                  </div>
+
+                </div>
+
+              </div>
+
+
+              <!-- Web -->
+
+              <div class="detail-row">
+
+                <svg class="detail-icon"
+                     viewBox="0 0 24 24"
+                     fill="none"
+                     stroke="currentColor"
+                     stroke-width="1.8"
+                     stroke-linecap="round"
+                     stroke-linejoin="round">
+                  <circle cx="12" cy="12" r="9"></circle>
+                  <path d="M3 12h18"></path>
+                  <path d="M12 3c2.5 2.4 3.5 5.4 3.5 9s-1 6.6-3.5 9c-2.5-2.4-3.5-5.4-3.5-9S9.5 5.4 12 3Z"></path>
+                </svg>
+
+                <div class="detail-content">
+
+                  <span class="detail-label">
+                    Web
+                  </span>
+
+                  <a
+                    class="detail-button"
+                    href="https://www.restauranteonirica.es/comer-en-onirica/"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    Ver restaurante
+                  </a>
+
+                </div>
+
+              </div>
+
+            </div>
+
+          </article>
+
+
+          <!-- FREETOUR -->
+
+          <article class="activity">
+
+            <div class="activity-main">
+
+              <div class="activity-time">
+                16:45
+              </div>
+
+              <div class="activity-title">
+                Freetour
+              </div>
+
+              <div class="activity-actions">
+
+                <button
+                  class="icon-button"
+                  type="button"
+                  aria-label="Mostrar información"
+                  onclick="toggleActivity(this)"
+                >
+                  <svg
+                    class="expand-icon"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke-width="1.8"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                  >
+                    <path d="m6 9 6 6 6-6"></path>
+                  </svg>
+                </button>
+
+              </div>
+
+            </div>
+
+            <div class="activity-details">
+
+              <div class="detail-row">
+
+                <svg class="detail-icon"
+                     viewBox="0 0 24 24"
+                     fill="none"
+                     stroke="currentColor"
+                     stroke-width="1.8"
+                     stroke-linecap="round"
+                     stroke-linejoin="round">
+                  <circle cx="12" cy="12" r="9"></circle>
+                  <path d="M12 7v5l3 2"></path>
+                </svg>
+
+                <div class="detail-content">
+
+                  <span class="detail-label">
+                    Duración
+                  </span>
+
+                  <span class="detail-value">
+                    90 minutos
+                  </span>
+
+                </div>
+
+              </div>
+
+              <div class="detail-row">
+
+                <div class="detail-content">
+                  <span class="placeholder">
+                    Información pendiente
+                  </span>
+                </div>
+
+              </div>
+
+            </div>
+
+          </article>
+
+
+          <!-- ESCAPE -->
+
+          <article class="activity">
+
+            <div class="activity-main">
+
+              <div class="activity-time">
+                19:30
+              </div>
+
+              <div class="activity-title">
+                Escape
+              </div>
+
+              <div class="activity-actions">
+
+                <a
+                  class="icon-button"
+                  href="https://www.google.com/maps/search/?api=1&query=Room+Hunter%2C+Av.+del+Arlanz%C3%B3n%2C+40%2C+09004+Burgos%2C+Espa%C3%B1a"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label="Abrir en Google Maps"
+                >
+                  <svg viewBox="0 0 24 24"
+                       fill="none"
+                       stroke-width="1.8"
+                       stroke-linecap="round"
+                       stroke-linejoin="round">
+                    <path d="M20 10c0 5-8 11-8 11S4 15 4 10a8 8 0 1 1 16 0Z"></path>
+                    <circle cx="12" cy="10" r="2.5"></circle>
+                  </svg>
+                </a>
+
+                <button
+                  class="icon-button"
+                  type="button"
+                  aria-label="Mostrar información"
+                  onclick="toggleActivity(this)"
+                >
+                  <svg
+                    class="expand-icon"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke-width="1.8"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                  >
+                    <path d="m6 9 6 6 6-6"></path>
+                  </svg>
+                </button>
+
+              </div>
+
+            </div>
+
+
+            <div class="activity-details">
+
+              <div class="detail-row">
+
+                <svg class="detail-icon"
+                     viewBox="0 0 24 24"
+                     fill="none"
+                     stroke="currentColor"
+                     stroke-width="1.8"
+                     stroke-linecap="round"
+                     stroke-linejoin="round">
+                  <path d="M20 10c0 5-8 11-8 11S4 15 4 10a8 8 0 1 1 16 0Z"></path>
+                  <circle cx="12" cy="10" r="2.5"></circle>
+                </svg>
+
+                <div class="detail-content">
+
+                  <span class="detail-label">
+                    Dirección
+                  </span>
+
+                  <span class="detail-value">
+                    Room Hunter<br>
+                    Av. del Arlanzón, 40<br>
+                    09004 Burgos, España
+                  </span>
+
+                  <div class="address-actions">
+
+                    <button
+                      class="detail-button"
+                      type="button"
+                      onclick="copyAddress(
+                        'Room Hunter, Av. del Arlanzón, 40, 09004 Burgos, España',
+                        this
+                      )"
+                    >
+                      <svg width="16" height="16"
+                           viewBox="0 0 24 24"
+                           fill="none"
+                           stroke="currentColor"
+                           stroke-width="1.8"
+                           stroke-linecap="round"
+                           stroke-linejoin="round">
+                        <rect x="9" y="9" width="11" height="11" rx="2"></rect>
+                        <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
+                      </svg>
+
+                      Copiar dirección
+                    </button>
+
+                    <span class="copy-message">
+                      Copiado
+                    </span>
+
+                  </div>
+
+                </div>
+
+              </div>
+
+            </div>
+
+          </article>
+
+        </div>
+
+      </section>
+
+
+      <!-- =========================
+           27 SEPTIEMBRE
+           ========================= -->
+
+      <section id="dia-27" class="day-section">
+
+        <div class="day-heading">
+          <div class="day-number">27 septiembre</div>
+          <div class="day-name">domingo</div>
+        </div>
+
+        <div class="activities">
+
+          <article class="activity">
+
+            <div class="activity-main">
+
+              <div class="activity-time">
+                —
+              </div>
+
+              <div class="activity-title">
+                Sin actividades añadidas
+              </div>
+
+            </div>
+
+          </article>
+
+        </div>
+
+      </section>
+
+
+      <!-- =========================
+           28 SEPTIEMBRE
+           ========================= -->
+
+      <section id="dia-28" class="day-section">
+
+        <div class="day-heading">
+          <div class="day-number">28 septiembre</div>
+          <div class="day-name">lunes</div>
+        </div>
+
+        <div class="activities">
+
+          <article class="activity">
+
+            <div class="activity-main">
+
+              <div class="activity-time">
+                —
+              </div>
+
+              <div class="activity-title">
+                Sin actividades añadidas
+              </div>
+
+            </div>
+
+          </article>
+
+        </div>
+
+      </section>
+
+
+      <!-- =========================
+           INFORMACIÓN COMPLETA ALOJAMIENTO
+           ========================= -->
+
+      <section
+        id="alojamiento-completo"
+        class="day-section"
+      >
+
+        <h2 class="section-title">
+          Información del alojamiento
+        </h2>
+
+        <p class="section-subtitle">
+          Información completa pendiente de añadir.
+        </p>
+
+        <div class="accommodation-full">
+
+          <p class="placeholder">
+            Aquí añadiremos posteriormente toda la información
+            relevante del alojamiento.
+          </p>
+
+        </div>
+
+      </section>
+
+    </main>
+
+  </div>
+
+
+  <script>
+
+    /*
+     * Abre/cierra la información de una actividad.
+     */
+    function toggleActivity(button) {
+
+      const activity = button.closest(".activity");
+
+      if (!activity) return;
+
+      activity.classList.toggle("open");
+
+      const isOpen = activity.classList.contains("open");
+
+      button.setAttribute(
+        "aria-label",
+        isOpen
+          ? "Ocultar información"
+          : "Mostrar información"
+      );
+    }
+
+
+    /*
+     * Copia una dirección al portapapeles.
+     */
+    async function copyAddress(address, button) {
+
+      try {
+
+        await navigator.clipboard.writeText(address);
+
+        const message =
+          button.parentElement.querySelector(".copy-message");
+
+        if (message) {
+
+          message.classList.add("visible");
+
+          setTimeout(() => {
+            message.classList.remove("visible");
+          }, 1800);
+
+        }
+
+      } catch (error) {
+
+        /*
+         * Fallback para navegadores donde
+         * navigator.clipboard no esté disponible.
+         */
+
+        const textArea = document.createElement("textarea");
+
+        textArea.value = address;
+        textArea.style.position = "fixed";
+        textArea.style.opacity = "0";
+
+        document.body.appendChild(textArea);
+
+        textArea.focus();
+        textArea.select();
+
+        try {
+          document.execCommand("copy");
+        } catch (err) {
+          console.error("No se pudo copiar la dirección.", err);
+        }
+
+        document.body.removeChild(textArea);
+
+        const message =
+          button.parentElement.querySelector(".copy-message");
+
+        if (message) {
+
+          message.classList.add("visible");
+
+          setTimeout(() => {
+            message.classList.remove("visible");
+          }, 1800);
+
+        }
+      }
+    }
+
+  </script>
+
+</body>
+</html>
