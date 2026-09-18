@@ -1,0 +1,132 @@
+# Estructura de `index.html`
+
+> Referencia rápida de la estructura, componentes, estilos y funciones del `index.html`.
+> Mantener actualizado al modificar el archivo.
+
+---
+
+## 1. Visión general
+
+- **Proyecto:** Burgos 2026 — página web estática de itinerario (26-28 septiembre).
+- **Archivo principal:** `index.html` (HTML + CSS inline + JS inline).
+- **Estilo:** Mobile-first, responsive con `@media`.
+
+---
+
+## 2. Variables CSS (`:root`)
+
+```css
+--background:        #f7f8fa;
+--card:               #ffffff;
+--text:               #1f2937;
+--muted:              #6b7280;
+--border:             #e5e7eb;
+--accent:             #2563eb;
+--accent-light:       #eff6ff;
+--accent-soft:        #f5f8ff;
+--success:            #16a34a;
+--gradient-accent:    linear-gradient(135deg, #2563eb 0%, #3b82f6 100%);
+```
+
+---
+
+## 3. Layout
+
+```
+<div class="page">
+  <header class="hero">        <!-- Título + subtítulo -->
+  <nav class="top-nav">        <!-- Navegación sticky: días + alojamiento + toggle -->
+  <main>
+    <section id="alojamiento">            <!-- Resumen alojamiento -->
+    <section id="dia-26">                 <!-- Día 26 (sábado) -->
+    <section id="dia-27">                 <!-- Día 27 (domingo) -->
+    <section id="dia-28">                 <!-- Día 28 (lunes) -->
+    <section id="alojamiento-completo">  <!-- Información completa alojamiento -->
+  </main>
+</div>
+```
+
+- `.page`: contenedor central, `max-width: 600px`.
+- `.hero`: encabezado con gradiente azul.
+- `.top-nav`: barra sticky con enlaces de anclaje (`#dia-26`, etc.) + ícono de casa + botón `#toggle-all`.
+- `main`: padding `20px 14px 60px`.
+- `section`: `margin-bottom: 34px`.
+
+---
+
+## 4. Componentes
+
+### 4.1. Hero (`.hero`)
+- `<h1>` con el nombre del evento.
+- `<p>` con fechas.
+
+### 4.2. Navegación (`.top-nav`)
+- Enlaces `<a>` por día (`#dia-26`, `#dia-27`, `#dia-28`).
+- Ícono de casa (SVG) → `#alojamiento`.
+- Botón `#toggle-all` (`.nav-control`) → llama `toggleAllActivities(this)`.
+
+### 4.3. Tarjeta de alojamiento (`.accommodation-card`)
+- Ícono (SVG), título, dirección.
+- Botón `.small-button` → link `#alojamiento-completo`.
+
+### 4.4. Actividad (`.activity`)
+- `.activity-main`: tiempo + título + acciones.
+  - `.activity-time`: hora (ej. `14:10`, o `—` si vacío).
+  - `.activity-title`: nombre de la actividad.
+  - `.activity-actions`: botones de icono.
+    - Link Google Maps (SVG mapa).
+    - Botón expandir (SVG flecha) → `toggleActivity(this)`.
+- `.activity-details` (oculto por defecto, visible con `.open`):
+  - Filas `.detail-row` con SVG icono + contenido.
+  - Tipos de fila: Dirección, Web, Precio, Menú, Reserva, Duración, Historia.
+  - `.address-actions`: botón copiar dirección + mensaje `.copy-message`.
+
+### 4.5. Información completa alojamiento
+- `#alojamiento-completo`: título, subtítulo, contenedor `.accommodation-full` con placeholder.
+
+---
+
+## 5. Funciones JavaScript
+
+```js
+toggleActivity(button)
+  // Abre/cierra .activity-details de una actividad (toggle .open)
+
+toggleAllActivities(button)
+  // Si alguna actividad está cerrada → abre todas; si todas abiertas → cierra todas
+  // Cambia texto del botón: "Contraer todo" / "Desplejar todo"
+
+copyAddress(address, button)
+  // Copia dirección al portapapeles (navigator.clipboard o fallback execCommand)
+  // Muestra mensaje "Copiado" por 1.8s
+```
+
+---
+
+## 6. Responsive
+
+```css
+@media (min-width: 601px) {
+  body { padding: 24px 0; }
+  .page { border-radius: 18px; box-shadow: ...; }
+  .top-nav { position: sticky; }
+}
+
+@media (max-width: 380px) {
+  body { font-size: 16px; }
+  .activity-time { width: 45px; font-size: 0.9rem; }
+  .activity-title { font-size: 1rem; }
+  .icon-button { width: 37px; height: 37px; }
+}
+```
+
+---
+
+## 7. Días y estado actual
+
+| Día    | Fecha      | Estado                          |
+|--------|------------|---------------------------------|
+| 26 sep | sábado     | 3 actividades (comida, freetour, escape) |
+| 27 sep | domingo    | Sin actividades añadidas        |
+| 28 sep | lunes      | Sin actividades añadidas        |
+| Alta.  | —          | Información pendiente           |
