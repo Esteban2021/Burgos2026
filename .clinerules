@@ -63,6 +63,7 @@ El CSS ya **no está inline**: se carga desde `styles.css` mediante, en `<head>`
     <section id="dia-26">                 <!-- Día 26 (sábado) -->
     <section id="dia-27">                 <!-- Día 27 (domingo) -->
     <section id="dia-28">                 <!-- Día 28 (lunes) -->
+    <section id="aparcamiento">           <!-- Información sobre aparcamiento en Burgos -->
     <section id="alojamiento-completo">  <!-- Información completa alojamiento -->
   </main>
 </div>
@@ -135,6 +136,12 @@ Definidos una sola vez al inicio de `<body>` dentro de un `<svg>` oculto (`width
   - Tipos de fila: Dirección (con `.address-actions`), Entrada, Salida, Parking, Precio total, Reserva (enlace a Booking).
   - Usa los mismos estilos de `.activity-details` (icono del sprite + `.detail-content`).
 
+### 5.6. Información sobre aparcamiento en Burgos
+- `#aparcamiento`: título (`Aparcamiento` / `Burgos`), contenedor `.accommodation-full` con filas `.detail-row`.
+  - Filas: Resumen (`#icon-book`), Web (`#icon-globe`, enlace a la conversación de Gemini) y tres parkings (`#icon-parking`): Calle Dr. José Luis Santamaría, disuasorio Antigua Estación (Bulevar Ferroviario) y Aparcamiento Sur Castillo de Burgos.
+  - Cada dirección de parking incluye `.address-actions` con un enlace "Ver en Google Maps".
+  - Usa los mismos estilos que `#alojamiento-completo` (icono del sprite + `.detail-content`).
+
 ---
 
 ## 6. Funciones JavaScript
@@ -182,4 +189,5 @@ copyAddress(address, button)
 | 26 sep | sábado     | 4 actividades (posibles visitas, comida, freetour, escape) |
 | 27 sep | domingo    | 2 actividades (Atapuerca, Paleolitico Vivo) |
 | 28 sep | lunes      | Sin actividades añadidas        |
+| Aparc. | —          | Información sobre aparcamiento en Burgos (zona azul ORA + 3 parkings gratuitos) |
 | Alta.  | —          | Apartamento La Muralla (parking gratis, 277,20 €) |
