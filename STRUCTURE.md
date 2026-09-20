@@ -181,6 +181,6 @@ copyAddress(address, button)
 |--------|------------|---------------------------------|
 | 26 sep | sábado     | 4 actividades (posibles visitas —catedral, castillo, Monasterio de Las Huelgas—, comida, freetour, escape) |
 | 27 sep | domingo    | 2 actividades (Atapuerca, Paleolitico Vivo) |
-| 28 sep | lunes      | Sin actividades añadidas        |
+| 28 sep | lunes      | 5 actividades (Santo Domingo de Silos, Desfiladero de La Yecla, comida, Covarrubias, paseo de despedida y regreso) |
 | Aparc. | —          | Información sobre aparcamiento en Burgos (zona azul ORA + 3 parkings gratuitos) |
 | Alta.  | —          | Apartamento La Muralla (parking gratis, 277,20 €) |
