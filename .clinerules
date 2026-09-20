@@ -15,12 +15,27 @@
 ## 1. Visión general
 
 - **Proyecto:** Burgos 2026 — página web estática de itinerario (26-28 septiembre).
-- **Archivo principal:** `index.html` (HTML + CSS inline + JS inline).
-- **Estilo:** Mobile-first, responsive con `@media`.
+- **Archivos:**
+  - `index.html` — HTML + JS inline.
+  - `styles.css` — hoja de estilos externa (todo el CSS).
+  - `STRUCTURE.md` — esta documentación.
+  - `.clinerules` — copia sincronizada de `STRUCTURE.md` para el contexto de Cline.
+- **Estilo:** Mobile-first, responsive con `@media` (definido en `styles.css`).
+- **Iconos:** sprite SVG (`<defs><symbol>`) al inicio de `<body>`; se instancian con `<svg><use href="#icon-..."></use></svg>`.
+
+### 1.1. Carga de estilos
+
+El CSS ya **no está inline**: se carga desde `styles.css` mediante, en `<head>`:
+
+```html
+<link rel="stylesheet" href="styles.css">
+```
 
 ---
 
 ## 2. Variables CSS (`:root`)
+
+> Definidas en `styles.css`.
 
 ```css
 --background:        #f7f8fa;
@@ -61,42 +76,68 @@
 
 ---
 
-## 4. Componentes
+## 4. Iconos (sprite SVG)
 
-### 4.1. Hero (`.hero`)
+Definidos una sola vez al inicio de `<body>` dentro de un `<svg>` oculto (`width=0 height=0`, `aria-hidden`), y reutilizados mediante `<use>`:
+
+| id                 | Uso                                              |
+|--------------------|--------------------------------------------------|
+| `icon-home`        | Casa (nav + tarjeta de alojamiento)              |
+| `icon-pin`         | Ubicación (Google Maps, dirección, alojamiento)  |
+| `icon-chevron`     | Flecha expandir/contraer actividad               |
+| `icon-globe`       | Web                                              |
+| `icon-euro`        | Precio                                           |
+| `icon-copy`        | Copiar dirección                                 |
+| `icon-clock`       | Duración / horario                               |
+| `icon-calendar`    | Entrada / salida (alojamiento)                   |
+| `icon-calendar-check` | Reserva                                       |
+| `icon-menu`        | Menú                                             |
+| `icon-parking`     | Parking                                          |
+| `icon-cathedral`   | La catedral (posibles visitas)                   |
+| `icon-castle`      | El castillo (posibles visitas)                   |
+| `icon-book`        | Historia (escape)                                |
+
+---
+
+## 5. Componentes
+
+### 5.1. Hero (`.hero`)
 - `<h1>` con el nombre del evento.
 - `<p>` con fechas.
 
-### 4.2. Navegación (`.top-nav`)
+### 5.2. Navegación (`.top-nav`)
 - Enlaces `<a>` por día (`#dia-26`, `#dia-27`, `#dia-28`).
-- Ícono de casa (SVG) → `#alojamiento`.
+- Ícono de casa (`#icon-home`) → `#alojamiento`.
 - Botón `#toggle-all` (`.nav-control`) → llama `toggleAllActivities(this)`.
 
-### 4.3. Tarjeta de alojamiento (`.accommodation-card`)
-- Ícono (SVG), título, dirección.
+### 5.3. Tarjeta de alojamiento (`.accommodation-card`)
+- Ícono (`#icon-home`), título, dirección.
+- Botón icono Google Maps (`#icon-pin`) → enlace externo a Google Maps.
 - Botón `.small-button` → link `#alojamiento-completo`.
 
-### 4.4. Actividad (`.activity`)
+### 5.4. Actividad (`.activity`)
 - `.activity-main`: tiempo + título + acciones.
   - `.activity-time`: hora (ej. `14:10`, o `—` si vacío).
   - `.activity-time.long`: para horas largas como `Durante la mañana` (ancho flexible, envoltura).
   - `.activity-title`: nombre de la actividad.
   - `.activity-actions`: botones de icono.
-    - Link Google Maps (SVG mapa).
-    - Botón expandir (SVG flecha) → `toggleActivity(this)`.
+    - Link Google Maps (`#icon-pin`).
+    - Botón expandir (`#icon-chevron`) → `toggleActivity(this)`.
 - `.activity-details` (oculto por defecto, visible con `.open`):
-  - Filas `.detail-row` con SVG icono + contenido.
-  - Tipos de fila: Dirección, Web, Precio, Menú, Reserva, Duración, Historia, Horario, Importante, Posible visita.
+  - Filas `.detail-row` con icono del sprite + contenido.
+  - Tipos de fila: Dirección, Web, Precio, Menú, Reserva, Duración, Historia, Horario, Importante.
   - `.schedule`: texto de horario (tamaño y color atenuados).
   - `.address-actions`: botones de dirección (Ver en Google Maps + Copiar dirección) + mensaje `.copy-message`.
   - `.detail-divider`: línea horizontal (`<hr>`) separando partes dentro de `.activity-details`.
 
-### 4.5. Información completa alojamiento
-- `#alojamiento-completo`: título, subtítulo, contenedor `.accommodation-full` con placeholder.
+### 5.5. Información completa alojamiento
+- `#alojamiento-completo`: título, subtítulo, contenedor `.accommodation-full` con filas `.detail-row`.
+  - Tipos de fila: Dirección (con `.address-actions`), Entrada, Salida, Parking, Precio total, Reserva (enlace a Booking).
+  - Usa los mismos estilos de `.activity-details` (icono del sprite + `.detail-content`).
 
 ---
 
-## 5. Funciones JavaScript
+## 6. Funciones JavaScript
 
 ```js
 toggleActivity(button)
@@ -106,20 +147,22 @@ toggleAllActivities(button)
   // Si alguna actividad está cerrada → abre todas; si todas abiertas → cierra todas
   // Cambia texto del botón: "Contraer todo" / "Desplegar todo"
 
+showCopyMessage(button)
+  // Muestra durante 1.8s el aviso "Copiado" (.copy-message.visible)
+
 copyAddress(address, button)
   // Copia dirección al portapapeles (navigator.clipboard o fallback execCommand)
-  // Muestra mensaje "Copiado" por 1.8s
+  // Llama a showCopyMessage(button)
 ```
 
 ---
 
-## 6. Responsive
+## 7. Responsive
 
 ```css
 @media (min-width: 601px) {
   body { padding: 24px 0; }
   .page { border-radius: 18px; box-shadow: ...; }
-  .top-nav { position: sticky; }
 }
 
 @media (max-width: 380px) {
@@ -132,11 +175,11 @@ copyAddress(address, button)
 
 ---
 
-## 7. Días y estado actual
+## 8. Días y estado actual
 
 | Día    | Fecha      | Estado                          |
 |--------|------------|---------------------------------|
 | 26 sep | sábado     | 4 actividades (posibles visitas, comida, freetour, escape) |
 | 27 sep | domingo    | 2 actividades (Atapuerca, Paleolitico Vivo) |
 | 28 sep | lunes      | Sin actividades añadidas        |
-| Alta.  | —          | Información pendiente           |
+| Alta.  | —          | Apartamento La Muralla (parking gratis, 277,20 €) |

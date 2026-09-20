@@ -6,548 +6,135 @@
 
   <title>Burgos 2026</title>
 
-  <style>
-    :root {
-      --background: #f7f8fa;
-      --card: #ffffff;
-      --text: #1f2937;
-      --muted: #6b7280;
-      --border: #e5e7eb;
-      --accent: #2563eb;
-      --accent-light: #eff6ff;
-      --accent-soft: #f5f8ff;
-      --success: #16a34a;
-      --gradient-accent: linear-gradient(
-        135deg,
-        #2563eb 0%,
-        #3b82f6 100%
-      );
-    }
-
-    * {
-      box-sizing: border-box;
-    }
-
-    html {
-      scroll-behavior: smooth;
-      scroll-padding-top: 70px;
-    }
-
-    body {
-      margin: 0;
-      background: var(--background);
-      color: var(--text);
-      font-family:
-        -apple-system,
-        BlinkMacSystemFont,
-        "Segoe UI",
-        Roboto,
-        Helvetica,
-        Arial,
-        sans-serif;
-      font-size: 17px;
-      line-height: 1.55;
-    }
-
-    a {
-      color: inherit;
-    }
-
-    .page {
-      width: 100%;
-      max-width: 600px;
-      margin: 0 auto;
-      background: var(--background);
-      min-height: 100vh;
-    }
-
-    /* =========================
-       CABECERA
-       ========================= */
-
-    .hero {
-      padding: 44px 22px 30px;
-      text-align: center;
-      background: var(--gradient-accent);
-      border-bottom: 1px solid var(--border);
-      color: #ffffff;
-    }
-
-    .hero h1 {
-      margin: 0;
-      font-size: 2rem;
-      letter-spacing: 0.04em;
-      font-weight: 800;
-    }
-
-    .hero p {
-      margin: 8px 0 0;
-      color: rgba(255, 255, 255, 0.9);
-      font-size: 1rem;
-      font-weight: 600;
-    }
-
-    /* =========================
-       NAVEGACIÓN
-       ========================= */
-
-    .top-nav {
-      position: sticky;
-      top: 0;
-      z-index: 100;
-      display: flex;
-      background: rgba(255, 255, 255, 0.96);
-      backdrop-filter: blur(10px);
-      border-bottom: 1px solid var(--border);
-      overflow-x: auto;
-      scrollbar-width: none;
-    }
-
-    .top-nav::-webkit-scrollbar {
-      display: none;
-    }
-
-    .top-nav a {
-      flex: 1 0 auto;
-      min-width: 78px;
-      padding: 13px 10px;
-      text-align: center;
-      text-decoration: none;
-      color: var(--muted);
-      font-size: 0.9rem;
-      font-weight: 650;
-      white-space: nowrap;
-    }
-
-    .top-nav a:hover,
-    .top-nav a:focus {
-      color: var(--accent);
-      background: var(--accent-light);
-    }
-
-    .nav-icon {
-      width: 21px;
-      height: 21px;
-      vertical-align: middle;
-    }
-
-    .nav-control {
-      flex: 1 0 auto;
-      min-width: 78px;
-      padding: 13px 10px;
-      text-align: center;
-      border: 0;
-      border-left: 1px solid var(--border);
-      background: transparent;
-      color: var(--muted);
-      font-size: 0.78rem;
-      font-weight: 600;
-      font-family: inherit;
-      white-space: nowrap;
-      cursor: pointer;
-      -webkit-tap-highlight-color: transparent;
-    }
-
-    .nav-control:hover,
-    .nav-control:focus {
-      color: var(--accent);
-      background: var(--accent-light);
-    }
-
-    /* =========================
-       CONTENIDO
-       ========================= */
-
-    main {
-      padding: 20px 14px 60px;
-    }
-
-    section {
-      margin-bottom: 34px;
-    }
-
-    .section-title {
-      margin: 0 8px 12px;
-      font-size: 1.45rem;
-      font-weight: 800;
-    }
-
-    .section-subtitle {
-      margin: -5px 8px 15px;
-      color: var(--muted);
-      font-size: 0.95rem;
-    }
-
-    /* =========================
-       ALOJAMIENTO RESUMEN
-       ========================= */
-
-    .accommodation-card {
-      display: flex;
-      align-items: center;
-      gap: 12px;
-      background: var(--card);
-      border: 1px solid var(--border);
-      border-radius: 16px;
-      padding: 18px;
-      margin-bottom: 34px;
-    }
-
-    .accommodation-header {
-      display: flex;
-      align-items: center;
-      gap: 12px;
-      flex: 1;
-      min-width: 0;
-    }
-
-    .accommodation-icon {
-      width: 42px;
-      height: 42px;
-      border-radius: 12px;
-      background: var(--accent-light);
-      color: var(--accent);
-      display: grid;
-      place-items: center;
-      flex-shrink: 0;
-    }
-
-    .accommodation-header h2 {
-      margin: 0;
-      font-size: 1.15rem;
-    }
-
-    .accommodation-address {
-      margin: 3px 0 0;
-      color: var(--muted);
-      font-size: 0.95rem;
-    }
-
-    .accommodation-actions {
-      display: flex;
-      gap: 8px;
-      flex-shrink: 0;
-    }
-
-    .small-button {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      gap: 7px;
-      padding: 9px 14px;
-      border-radius: 10px;
-      background: var(--accent);
-      color: #ffffff;
-      text-decoration: none;
-      font-size: 0.9rem;
-      font-weight: 650;
-    }
-
-    .small-button:hover,
-    .small-button:focus {
-      background: #1d4ed8;
-    }
-
-    /* =========================
-       DÍA
-       ========================= */
-
-    .day-section {
-      scroll-margin-top: 70px;
-    }
-
-    .day-heading {
-      display: flex;
-      align-items: baseline;
-      gap: 9px;
-      margin: 0 8px 14px;
-    }
-
-    .day-number {
-      font-size: 1.45rem;
-      font-weight: 800;
-    }
-
-    .day-name {
-      color: var(--muted);
-      font-size: 0.95rem;
-    }
-
-    /* =========================
-       ACTIVIDADES
-       ========================= */
-
-    .activities {
-      display: flex;
-      flex-direction: column;
-      gap: 10px;
-    }
-
-    .activity {
-      background: var(--card);
-      border: 1px solid var(--border);
-      border-radius: 15px;
-      overflow: hidden;
-    }
-
-    .activity-main {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      padding: 15px 14px;
-    }
-
-    .activity-time {
-      width: 50px;
-      flex-shrink: 0;
-      font-size: 0.95rem;
-      font-weight: 800;
-      color: var(--accent);
-    }
-
-    .activity-time.long {
-      width: auto;
-      min-width: 50px;
-      white-space: normal;
-      text-align: center;
-      line-height: 1.2;
-    }
-
-    .activity-title {
-      flex: 1;
-      min-width: 0;
-      font-size: 1.05rem;
-      font-weight: 700;
-    }
-
-    .activity-actions {
-      display: flex;
-      align-items: center;
-      gap: 4px;
-    }
-
-    .icon-button {
-      width: 40px;
-      height: 40px;
-      display: grid;
-      place-items: center;
-      border: 0;
-      border-radius: 10px;
-      background: transparent;
-      color: var(--muted);
-      cursor: pointer;
-      text-decoration: none;
-      -webkit-tap-highlight-color: transparent;
-    }
-
-    .icon-button:hover,
-    .icon-button:focus {
-      background: var(--accent-light);
-      color: var(--accent);
-    }
-
-    .icon-button svg {
-      width: 21px;
-      height: 21px;
-      stroke: currentColor;
-    }
-
-    .expand-icon {
-      transition: transform 0.2s ease;
-    }
-
-    .activity.open .expand-icon {
-      transform: rotate(180deg);
-    }
-
-    /* =========================
-       INFORMACIÓN DESPLEGABLE
-       ========================= */
-
-    .activity-details {
-      display: none;
-      border-top: 1px solid var(--border);
-      padding: 15px 15px 17px;
-      background: var(--accent-soft);
-    }
-
-    .activity.open .activity-details {
-      display: block;
-    }
-
-    .detail-row {
-      display: flex;
-      align-items: flex-start;
-      gap: 10px;
-      margin-bottom: 12px;
-    }
-
-    .detail-row:last-child {
-      margin-bottom: 0;
-    }
-
-    .detail-divider {
-      border: none;
-      border-top: 1px solid var(--border);
-      margin: 18px 0;
-    }
-
-    .detail-icon {
-      width: 21px;
-      height: 21px;
-      flex-shrink: 0;
-      color: var(--muted);
-    }
-
-    .detail-content {
-      flex: 1;
-      min-width: 0;
-    }
-
-    .detail-label {
-      display: block;
-      color: var(--muted);
-      font-size: 0.8rem;
-      margin-bottom: 1px;
-    }
-
-    .detail-value {
-      font-size: 0.95rem;
-    }
-
-    .address {
-      font-size: 0.8rem;
-    }
-
-    .price {
-      font-weight: 750;
-    }
-
-    .escape-history {
-      font-style: italic;
-    }
-
-    .schedule {
-      font-size: 0.85rem;
-      color: var(--muted);
-    }
-
-    .menu-list {
-      margin: 2px 0 0;
-      padding-left: 0;
-      list-style-position: inside;
-      font-size: 0.95rem;
-    }
-
-    .menu-list li {
-      margin-bottom: 2px;
-    }
-
-    .menu-list li:last-child {
-      margin-bottom: 0;
-    }
-
-    .address-actions {
-      display: flex;
-      gap: 8px;
-      margin-top: 8px;
-      flex-wrap: wrap;
-    }
-
-    .detail-button {
-      display: inline-flex;
-      align-items: center;
-      gap: 6px;
-      border: 1px solid var(--border);
-      background: white;
-      padding: 7px 10px;
-      border-radius: 9px;
-      text-decoration: none;
-      font-family: inherit;
-      font-size: 0.85rem;
-      color: var(--accent);
-      font-weight: 600;
-      cursor: pointer;
-    }
-
-    .detail-button:hover,
-    .detail-button:focus {
-      border-color: var(--accent);
-      background: var(--accent-light);
-    }
-
-    .copy-message {
-      display: inline-block;
-      margin-left: 5px;
-      color: var(--success);
-      font-size: 0.8rem;
-      opacity: 0;
-      transition: opacity 0.2s;
-    }
-
-    .copy-message.visible {
-      opacity: 1;
-    }
-
-    /* =========================
-       INFO ALOJAMIENTO FINAL
-       ========================= */
-
-    .accommodation-full {
-      background: var(--card);
-      border: 1px solid var(--border);
-      border-radius: 16px;
-      padding: 20px;
-    }
-
-    .placeholder {
-      color: var(--muted);
-      font-size: 0.95rem;
-    }
-
-    /* =========================
-       RESPONSIVE
-       ========================= */
-
-    @media (min-width: 601px) {
-      body {
-        padding: 24px 0;
-      }
-
-      .page {
-        border-radius: 18px;
-        overflow: hidden;
-        box-shadow: 0 8px 30px rgba(31, 41, 55, 0.08);
-      }
-
-      .top-nav {
-        position: sticky;
-      }
-    }
-
-    @media (max-width: 380px) {
-      body {
-        font-size: 16px;
-      }
-
-      .activity-time {
-        width: 45px;
-        font-size: 0.9rem;
-      }
-
-      .activity-title {
-        font-size: 1rem;
-      }
-
-      .icon-button {
-        width: 37px;
-        height: 37px;
-      }
-    }
-  </style>
+  <link rel="stylesheet" href="styles.css">
 </head>
 
 <body>
+
+  <!-- =========================
+       ICONOS (SPRITE SVG)
+       ========================= -->
+
+  <svg
+    width="0"
+    height="0"
+    aria-hidden="true"
+    focusable="false"
+    style="position: absolute"
+  >
+    <defs>
+
+      <symbol id="icon-home" viewBox="0 0 24 24"
+              fill="none" stroke="currentColor" stroke-width="1.8"
+              stroke-linecap="round" stroke-linejoin="round">
+        <path d="M3 10.5 12 3l9 7.5"></path>
+        <path d="M5 9.5V21h14V9.5"></path>
+        <path d="M9 21v-6h6v6"></path>
+      </symbol>
+
+      <symbol id="icon-pin" viewBox="0 0 24 24"
+              fill="none" stroke="currentColor" stroke-width="1.8"
+              stroke-linecap="round" stroke-linejoin="round">
+        <path d="M20 10c0 5-8 11-8 11S4 15 4 10a8 8 0 1 1 16 0Z"></path>
+        <circle cx="12" cy="10" r="2.5"></circle>
+      </symbol>
+
+      <symbol id="icon-chevron" viewBox="0 0 24 24"
+              fill="none" stroke="currentColor" stroke-width="1.8"
+              stroke-linecap="round" stroke-linejoin="round">
+        <path d="m6 9 6 6 6-6"></path>
+      </symbol>
+
+      <symbol id="icon-globe" viewBox="0 0 24 24"
+              fill="none" stroke="currentColor" stroke-width="1.8"
+              stroke-linecap="round" stroke-linejoin="round">
+        <circle cx="12" cy="12" r="9"></circle>
+        <path d="M3 12h18"></path>
+        <path d="M12 3c2.5 2.4 3.5 5.4 3.5 9s-1 6.6-3.5 9c-2.5-2.4-3.5-5.4-3.5-9S9.5 5.4 12 3Z"></path>
+      </symbol>
+
+      <symbol id="icon-euro" viewBox="0 0 24 24"
+              fill="none" stroke="currentColor" stroke-width="1.8"
+              stroke-linecap="round" stroke-linejoin="round">
+        <circle cx="12" cy="12" r="9"></circle>
+        <path d="M15 8.5c-.7-.6-1.7-1-3-1-1.7 0-3 .8-3 2s1.3 2 3 2 3 .8 3 2-1.3 2-3 2c-1.3 0-2.3-.4-3-1"></path>
+        <path d="M12 6v12"></path>
+      </symbol>
+
+      <symbol id="icon-copy" viewBox="0 0 24 24"
+              fill="none" stroke="currentColor" stroke-width="1.8"
+              stroke-linecap="round" stroke-linejoin="round">
+        <rect x="9" y="9" width="11" height="11" rx="2"></rect>
+        <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
+      </symbol>
+
+      <symbol id="icon-clock" viewBox="0 0 24 24"
+              fill="none" stroke="currentColor" stroke-width="1.8"
+              stroke-linecap="round" stroke-linejoin="round">
+        <circle cx="12" cy="12" r="9"></circle>
+        <path d="M12 7v5l3 2"></path>
+      </symbol>
+
+      <symbol id="icon-calendar" viewBox="0 0 24 24"
+              fill="none" stroke="currentColor" stroke-width="1.8"
+              stroke-linecap="round" stroke-linejoin="round">
+        <rect x="3" y="5" width="18" height="16" rx="2"></rect>
+        <path d="M3 9h18"></path>
+        <path d="M8 3v4"></path>
+        <path d="M16 3v4"></path>
+      </symbol>
+
+      <symbol id="icon-calendar-check" viewBox="0 0 24 24"
+              fill="none" stroke="currentColor" stroke-width="1.8"
+              stroke-linecap="round" stroke-linejoin="round">
+        <rect x="3" y="5" width="18" height="16" rx="2"></rect>
+        <path d="M3 9h18"></path>
+        <path d="M8 3v4"></path>
+        <path d="M16 3v4"></path>
+        <path d="m9.5 14 1.8 1.8L15 12"></path>
+      </symbol>
+
+      <symbol id="icon-menu" viewBox="0 0 24 24"
+              fill="none" stroke="currentColor" stroke-width="1.8"
+              stroke-linecap="round" stroke-linejoin="round">
+        <path d="M4 3v6a2 2 0 0 0 2 2 2 2 0 0 0 2-2V3"></path>
+        <path d="M6 11v10"></path>
+        <path d="M16 3c-1.4 0-2.5 1.4-2.5 3.8S14.6 10.5 16 10.5s2.5-1.3 2.5-3.7S17.4 3 16 3Z"></path>
+        <path d="M16 10.5V21"></path>
+      </symbol>
+
+      <symbol id="icon-cathedral" viewBox="0 0 256 256"
+              fill="currentColor" stroke="currentColor"
+              stroke-width="9px" stroke-linejoin="round">
+        <path d="M226.06 148.57L188 125.74V104a4 4 0 0 0-2-3.47l-54-30.85V44h20a4 4 0 0 0 0-8h-20V16a4 4 0 0 0-8 0v20h-20a4 4 0 0 0 0 8h20v25.68l-54 30.85a4 4 0 0 0-2 3.47v21.74l-38.06 22.83A4 4 0 0 0 28 152v64a4 4 0 0 0 4 4h80a4 4 0 0 0 4-4v-48a12 12 0 0 1 24 0v48a4 4 0 0 0 4 4h80a4 4 0 0 0 4-4v-64a4 4 0 0 0-1.94-3.43M36 154.26l32-19.2V212H36Zm92-6.26a20 20 0 0 0-20 20v44H76V106.32l52-29.71l52 29.71V212h-32v-44a20 20 0 0 0-20-20m92 64h-32v-76.94l32 19.2Z"></path>
+      </symbol>
+
+      <symbol id="icon-castle" viewBox="0 0 256 256"
+              fill="currentColor" stroke="currentColor"
+              stroke-width="9px" stroke-linejoin="round">
+        <path d="M216 220h-20V113.66l12.49-12.49a11.93 11.93 0 0 0 3.51-8.48V48a12 12 0 0 0-12-12h-24a4 4 0 0 0-4 4v28h-24V40a4 4 0 0 0-4-4h-32a4 4 0 0 0-4 4v28H84V40a4 4 0 0 0-4-4H56a12 12 0 0 0-12 12v44.69a11.93 11.93 0 0 0 3.51 8.48L60 113.66V220H40a4 4 0 0 0 0 8h176a4 4 0 0 0 0-8M66.83 109.17L53.17 95.51A4 4 0 0 1 52 92.69V48a4 4 0 0 1 4-4h20v28a4 4 0 0 0 4 4h32a4 4 0 0 0 4-4V44h24v28a4 4 0 0 0 4 4h32a4 4 0 0 0 4-4V44h20a4 4 0 0 1 4 4v44.69a4 4 0 0 1-1.17 2.82l-13.66 13.66A4 4 0 0 0 188 112v108h-32v-52a28 28 0 0 0-56 0v52H68V112a4 4 0 0 0-1.17-2.83M148 220h-40v-52a20 20 0 0 1 40 0Z"></path>
+      </symbol>
+
+      <symbol id="icon-parking" viewBox="0 0 24 24"
+              fill="none" stroke="currentColor" stroke-width="1.8"
+              stroke-linecap="round" stroke-linejoin="round">
+        <path d="M19 17V5a2 2 0 0 0-2-2H7a2 2 0 0 0-2 2v14"></path>
+        <path d="M19 17h2"></path>
+        <path d="M7 17H5"></path>
+        <rect x="8" y="13" width="8" height="4" rx="2"></rect>
+        <circle cx="9" cy="17" r="2"></circle>
+        <circle cx="18" cy="17" r="2"></circle>
+      </symbol>
+
+      <symbol id="icon-book" viewBox="0 0 24 24"
+              fill="none" stroke="#000000" stroke-linejoin="round">
+        <path d="M12 6.90909C10.8999 5.50893 9.20406 4.10877 5.00119 4.00602C4.72513 3.99928 4.5 4.22351 4.5 4.49965C4.5 6.54813 4.5 14.3034 4.5 16.597C4.5 16.8731 4.72515 17.09 5.00114 17.099C9.20405 17.2364 10.8999 19.0998 12 20.5M12 6.90909C13.1001 5.50893 14.7959 4.10877 18.9988 4.00602C19.2749 3.99928 19.5 4.21847 19.5 4.49461C19.5 6.78447 19.5 14.3064 19.5 16.5963C19.5 16.8724 19.2749 17.09 18.9989 17.099C14.796 17.2364 13.1001 19.0998 12 20.5M12 6.90909L12 20.5"></path>
+        <path d="M19.2353 6H21.5C21.7761 6 22 6.22386 22 6.5V19.539C22 19.9436 21.5233 20.2124 21.1535 20.0481C20.3584 19.6948 19.0315 19.2632 17.2941 19.2632C14.3529 19.2632 12 21 12 21C12 21 9.64706 19.2632 6.70588 19.2632C4.96845 19.2632 3.64156 19.6948 2.84647 20.0481C2.47668 20.2124 2 19.9436 2 19.539V6.5C2 6.22386 2.22386 6 2.5 6H4.76471"></path>
+      </symbol>
+
+    </defs>
+  </svg>
+
 
   <div class="page">
 
@@ -557,7 +144,7 @@
 
     <header class="hero">
       <h1>BURGOS 2026</h1>
-      <p>26 — 28 septiembre</p>
+      <p>26 - 28 septiembre</p>
     </header>
 
 
@@ -569,14 +156,8 @@
       <a href="#dia-26">26 SEP</a>
       <a href="#dia-27">27 SEP</a>
       <a href="#dia-28">28 SEP</a>
-      <a href="#alojamiento" aria-label="Alojamiento">
-        <svg class="nav-icon" viewBox="0 0 24 24"
-             fill="none" stroke="currentColor" stroke-width="1.8"
-             stroke-linecap="round" stroke-linejoin="round">
-          <path d="M3 10.5 12 3l9 7.5"></path>
-          <path d="M5 9.5V21h14V9.5"></path>
-          <path d="M9 21v-6h6v6"></path>
-        </svg>
+      <a href="#alojamiento-completo" aria-label="Alojamiento">
+        <svg class="nav-icon"><use href="#icon-home"></use></svg>
       </a>
       <button
         id="toggle-all"
@@ -603,26 +184,29 @@
           <div class="accommodation-header">
 
             <div class="accommodation-icon">
-              <!-- Casa -->
-              <svg width="23" height="23" viewBox="0 0 24 24"
-                   fill="none" stroke="currentColor" stroke-width="1.8"
-                   stroke-linecap="round" stroke-linejoin="round">
-                <path d="M3 10.5 12 3l9 7.5"></path>
-                <path d="M5 9.5V21h14V9.5"></path>
-                <path d="M9 21v-6h6v6"></path>
-              </svg>
+              <svg width="23" height="23"><use href="#icon-home"></use></svg>
             </div>
 
             <div>
-              <h2>Alojamiento</h2>
+              <h2>Apartamento La Muralla</h2>
               <p class="accommodation-address">
-                Información pendiente
+                Paseo Cubos 2 PISO 2ºB, 09003 Burgos, España
               </p>
             </div>
 
           </div>
 
           <div class="accommodation-actions">
+
+            <a
+              class="icon-button"
+              href="https://www.google.com/maps/search/?api=1&query=Paseo+Cubos+2,+09003+Burgos,+Espa%C3%B1a"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="Abrir en Google Maps"
+            >
+              <svg><use href="#icon-pin"></use></svg>
+            </a>
 
             <a
               class="small-button"
@@ -643,7 +227,6 @@
            ========================= -->
 
       <section id="dia-26" class="day-section">
-
         <div class="day-heading">
           <div class="day-number">26 septiembre</div>
           <div class="day-name">sábado</div>
@@ -675,16 +258,7 @@
                   aria-label="Mostrar información"
                   onclick="toggleActivity(this)"
                 >
-                  <svg
-                    class="expand-icon"
-                    viewBox="0 0 24 24"
-                    fill="none"
-                    stroke-width="1.8"
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                  >
-                    <path d="m6 9 6 6 6-6"></path>
-                  </svg>
+                  <svg class="expand-icon"><use href="#icon-chevron"></use></svg>
                 </button>
 
               </div>
@@ -698,14 +272,7 @@
 
               <div class="detail-row">
 
-                <svg class="detail-icon"
-                     viewBox="0 0 256 256"
-                     fill="currentColor"
-                     stroke="currentColor"
-                     stroke-width="9px"
-                     stroke-linejoin="round">
-                  <path d="M226.06 148.57L188 125.74V104a4 4 0 0 0-2-3.47l-54-30.85V44h20a4 4 0 0 0 0-8h-20V16a4 4 0 0 0-8 0v20h-20a4 4 0 0 0 0 8h20v25.68l-54 30.85a4 4 0 0 0-2 3.47v21.74l-38.06 22.83A4 4 0 0 0 28 152v64a4 4 0 0 0 4 4h80a4 4 0 0 0 4-4v-48a12 12 0 0 1 24 0v48a4 4 0 0 0 4 4h80a4 4 0 0 0 4-4v-64a4 4 0 0 0-1.94-3.43M36 154.26l32-19.2V212H36Zm92-6.26a20 20 0 0 0-20 20v44H76V106.32l52-29.71l52 29.71V212h-32v-44a20 20 0 0 0-20-20m92 64h-32v-76.94l32 19.2Z"></path>
-                </svg>
+                <svg class="detail-icon"><use href="#icon-cathedral"></use></svg>
 
                 <div class="detail-content">
 
@@ -732,14 +299,7 @@
 
               <div class="detail-row">
 
-                <svg class="detail-icon"
-                     viewBox="0 0 256 256"
-                     fill="currentColor"
-                     stroke="currentColor"
-                     stroke-width="9px"
-                     stroke-linejoin="round">
-                  <path d="M216 220h-20V113.66l12.49-12.49a11.93 11.93 0 0 0 3.51-8.48V48a12 12 0 0 0-12-12h-24a4 4 0 0 0-4 4v28h-24V40a4 4 0 0 0-4-4h-32a4 4 0 0 0-4 4v28H84V40a4 4 0 0 0-4-4H56a12 12 0 0 0-12 12v44.69a11.93 11.93 0 0 0 3.51 8.48L60 113.66V220H40a4 4 0 0 0 0 8h176a4 4 0 0 0 0-8M66.83 109.17L53.17 95.51A4 4 0 0 1 52 92.69V48a4 4 0 0 1 4-4h20v28a4 4 0 0 0 4 4h32a4 4 0 0 0 4-4V44h24v28a4 4 0 0 0 4 4h32a4 4 0 0 0 4-4V44h20a4 4 0 0 1 4 4v44.69a4 4 0 0 1-1.17 2.82l-13.66 13.66A4 4 0 0 0 188 112v108h-32v-52a28 28 0 0 0-56 0v52H68V112a4 4 0 0 0-1.17-2.83M148 220h-40v-52a20 20 0 0 1 40 0Z"></path>
-                </svg>
+                <svg class="detail-icon"><use href="#icon-castle"></use></svg>
 
                 <div class="detail-content">
 
@@ -788,14 +348,7 @@
                   rel="noopener noreferrer"
                   aria-label="Abrir en Google Maps"
                 >
-                  <svg viewBox="0 0 24 24"
-                       fill="none"
-                       stroke-width="1.8"
-                       stroke-linecap="round"
-                       stroke-linejoin="round">
-                    <path d="M20 10c0 5-8 11-8 11S4 15 4 10a8 8 0 1 1 16 0Z"></path>
-                    <circle cx="12" cy="10" r="2.5"></circle>
-                  </svg>
+                  <svg><use href="#icon-pin"></use></svg>
                 </a>
 
                 <!-- Expandir -->
@@ -805,16 +358,7 @@
                   aria-label="Mostrar información"
                   onclick="toggleActivity(this)"
                 >
-                  <svg
-                    class="expand-icon"
-                    viewBox="0 0 24 24"
-                    fill="none"
-                    stroke-width="1.8"
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                  >
-                    <path d="m6 9 6 6 6-6"></path>
-                  </svg>
+                  <svg class="expand-icon"><use href="#icon-chevron"></use></svg>
                 </button>
 
               </div>
@@ -828,16 +372,7 @@
 
               <div class="detail-row">
 
-                <svg class="detail-icon"
-                     viewBox="0 0 24 24"
-                     fill="none"
-                     stroke="currentColor"
-                     stroke-width="1.8"
-                     stroke-linecap="round"
-                     stroke-linejoin="round">
-                  <path d="M20 10c0 5-8 11-8 11S4 15 4 10a8 8 0 1 1 16 0Z"></path>
-                  <circle cx="12" cy="10" r="2.5"></circle>
-                </svg>
+                <svg class="detail-icon"><use href="#icon-pin"></use></svg>
 
                 <div class="detail-content">
 
@@ -859,17 +394,7 @@
                         this
                       )"
                     >
-                      <!-- Copiar -->
-                      <svg width="16" height="16"
-                           viewBox="0 0 24 24"
-                           fill="none"
-                           stroke="currentColor"
-                           stroke-width="1.8"
-                           stroke-linecap="round"
-                           stroke-linejoin="round">
-                        <rect x="9" y="9" width="11" height="11" rx="2"></rect>
-                        <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
-                      </svg>
+                      <svg width="16" height="16"><use href="#icon-copy"></use></svg>
 
                       Copiar dirección
                     </button>
@@ -889,17 +414,7 @@
 
               <div class="detail-row">
 
-                <svg class="detail-icon"
-                     viewBox="0 0 24 24"
-                     fill="none"
-                     stroke="currentColor"
-                     stroke-width="1.8"
-                     stroke-linecap="round"
-                     stroke-linejoin="round">
-                  <circle cx="12" cy="12" r="9"></circle>
-                  <path d="M3 12h18"></path>
-                  <path d="M12 3c2.5 2.4 3.5 5.4 3.5 9s-1 6.6-3.5 9c-2.5-2.4-3.5-5.4-3.5-9S9.5 5.4 12 3Z"></path>
-                </svg>
+                <svg class="detail-icon"><use href="#icon-globe"></use></svg>
 
                 <div class="detail-content">
 
@@ -925,17 +440,7 @@
 
               <div class="detail-row">
 
-                <svg class="detail-icon"
-                     viewBox="0 0 24 24"
-                     fill="none"
-                     stroke="currentColor"
-                     stroke-width="1.8"
-                     stroke-linecap="round"
-                     stroke-linejoin="round">
-                  <circle cx="12" cy="12" r="9"></circle>
-                  <path d="M15 8.5c-.7-.6-1.7-1-3-1-1.7 0-3 .8-3 2s1.3 2 3 2 3 .8 3 2-1.3 2-3 2c-1.3 0-2.3-.4-3-1"></path>
-                  <path d="M12 6v12"></path>
-                </svg>
+                <svg class="detail-icon"><use href="#icon-euro"></use></svg>
 
                 <div class="detail-content">
                   <span class="detail-label">Precio total</span>
@@ -949,18 +454,7 @@
 
               <div class="detail-row">
 
-                <svg class="detail-icon"
-                     viewBox="0 0 24 24"
-                     fill="none"
-                     stroke="currentColor"
-                     stroke-width="1.8"
-                     stroke-linecap="round"
-                     stroke-linejoin="round">
-                  <path d="M4 3v6a2 2 0 0 0 2 2 2 2 0 0 0 2-2V3"></path>
-                  <path d="M6 11v10"></path>
-                  <path d="M16 3c-1.4 0-2.5 1.4-2.5 3.8S14.6 10.5 16 10.5s2.5-1.3 2.5-3.7S17.4 3 16 3Z"></path>
-                  <path d="M16 10.5V21"></path>
-                </svg>
+                <svg class="detail-icon"><use href="#icon-menu"></use></svg>
 
                 <div class="detail-content">
 
@@ -1012,14 +506,7 @@
                   rel="noopener noreferrer"
                   aria-label="Abrir en Google Maps"
                 >
-                  <svg viewBox="0 0 24 24"
-                       fill="none"
-                       stroke-width="1.8"
-                       stroke-linecap="round"
-                       stroke-linejoin="round">
-                    <path d="M20 10c0 5-8 11-8 11S4 15 4 10a8 8 0 1 1 16 0Z"></path>
-                    <circle cx="12" cy="10" r="2.5"></circle>
-                  </svg>
+                  <svg><use href="#icon-pin"></use></svg>
                 </a>
 
                 <button
@@ -1028,16 +515,7 @@
                   aria-label="Mostrar información"
                   onclick="toggleActivity(this)"
                 >
-                  <svg
-                    class="expand-icon"
-                    viewBox="0 0 24 24"
-                    fill="none"
-                    stroke-width="1.8"
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                  >
-                    <path d="m6 9 6 6 6-6"></path>
-                  </svg>
+                  <svg class="expand-icon"><use href="#icon-chevron"></use></svg>
                 </button>
 
               </div>
@@ -1050,16 +528,7 @@
 
               <div class="detail-row">
 
-                <svg class="detail-icon"
-                     viewBox="0 0 24 24"
-                     fill="none"
-                     stroke="currentColor"
-                     stroke-width="1.8"
-                     stroke-linecap="round"
-                     stroke-linejoin="round">
-                  <path d="M20 10c0 5-8 11-8 11S4 15 4 10a8 8 0 1 1 16 0Z"></path>
-                  <circle cx="12" cy="10" r="2.5"></circle>
-                </svg>
+                <svg class="detail-icon"><use href="#icon-pin"></use></svg>
 
                 <div class="detail-content">
 
@@ -1081,16 +550,7 @@
                         this
                       )"
                     >
-                      <svg width="16" height="16"
-                           viewBox="0 0 24 24"
-                           fill="none"
-                           stroke="currentColor"
-                           stroke-width="1.8"
-                           stroke-linecap="round"
-                           stroke-linejoin="round">
-                        <rect x="9" y="9" width="11" height="11" rx="2"></rect>
-                        <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
-                      </svg>
+                      <svg width="16" height="16"><use href="#icon-copy"></use></svg>
 
                       Copiar dirección
                     </button>
@@ -1109,19 +569,7 @@
 
               <div class="detail-row">
 
-                <svg class="detail-icon"
-                     viewBox="0 0 24 24"
-                     fill="none"
-                     stroke="currentColor"
-                     stroke-width="1.8"
-                     stroke-linecap="round"
-                     stroke-linejoin="round">
-                  <rect x="3" y="5" width="18" height="16" rx="2"></rect>
-                  <path d="M3 9h18"></path>
-                  <path d="M8 3v4"></path>
-                  <path d="M16 3v4"></path>
-                  <path d="m9.5 14 1.8 1.8L15 12"></path>
-                </svg>
+                <svg class="detail-icon"><use href="#icon-calendar-check"></use></svg>
 
                 <div class="detail-content">
 
@@ -1146,17 +594,7 @@
 
               <div class="detail-row">
 
-                <svg class="detail-icon"
-                     viewBox="0 0 24 24"
-                     fill="none"
-                     stroke="currentColor"
-                     stroke-width="1.8"
-                     stroke-linecap="round"
-                     stroke-linejoin="round">
-                  <circle cx="12" cy="12" r="9"></circle>
-                  <path d="M15 8.5c-.7-.6-1.7-1-3-1-1.7 0-3 .8-3 2s1.3 2 3 2 3 .8 3 2-1.3 2-3 2c-1.3 0-2.3-.4-3-1"></path>
-                  <path d="M12 6v12"></path>
-                </svg>
+                <svg class="detail-icon"><use href="#icon-euro"></use></svg>
 
                 <div class="detail-content">
                   <span class="detail-label">Precio total</span>
@@ -1169,16 +607,7 @@
 
               <div class="detail-row">
 
-                <svg class="detail-icon"
-                     viewBox="0 0 24 24"
-                     fill="none"
-                     stroke="currentColor"
-                     stroke-width="1.8"
-                     stroke-linecap="round"
-                     stroke-linejoin="round">
-                  <circle cx="12" cy="12" r="9"></circle>
-                  <path d="M12 7v5l3 2"></path>
-                </svg>
+                <svg class="detail-icon"><use href="#icon-clock"></use></svg>
 
                 <div class="detail-content">
 
@@ -1222,14 +651,7 @@
                   rel="noopener noreferrer"
                   aria-label="Abrir en Google Maps"
                 >
-                  <svg viewBox="0 0 24 24"
-                       fill="none"
-                       stroke-width="1.8"
-                       stroke-linecap="round"
-                       stroke-linejoin="round">
-                    <path d="M20 10c0 5-8 11-8 11S4 15 4 10a8 8 0 1 1 16 0Z"></path>
-                    <circle cx="12" cy="10" r="2.5"></circle>
-                  </svg>
+                  <svg><use href="#icon-pin"></use></svg>
                 </a>
 
                 <button
@@ -1238,16 +660,7 @@
                   aria-label="Mostrar información"
                   onclick="toggleActivity(this)"
                 >
-                  <svg
-                    class="expand-icon"
-                    viewBox="0 0 24 24"
-                    fill="none"
-                    stroke-width="1.8"
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                  >
-                    <path d="m6 9 6 6 6-6"></path>
-                  </svg>
+                  <svg class="expand-icon"><use href="#icon-chevron"></use></svg>
                 </button>
 
               </div>
@@ -1259,16 +672,7 @@
 
               <div class="detail-row">
 
-                <svg class="detail-icon"
-                     viewBox="0 0 24 24"
-                     fill="none"
-                     stroke="currentColor"
-                     stroke-width="1.8"
-                     stroke-linecap="round"
-                     stroke-linejoin="round">
-                  <path d="M20 10c0 5-8 11-8 11S4 15 4 10a8 8 0 1 1 16 0Z"></path>
-                  <circle cx="12" cy="10" r="2.5"></circle>
-                </svg>
+                <svg class="detail-icon"><use href="#icon-pin"></use></svg>
 
                 <div class="detail-content">
 
@@ -1285,21 +689,12 @@
                     <button
                       class="detail-button"
                       type="button"
-                    onclick="copyAddress(
+                      onclick="copyAddress(
                         'Room Hunter, Av. del Arlanzón, 40, 09004 Burgos, España',
                         this
                       )"
                     >
-                      <svg width="16" height="16"
-                           viewBox="0 0 24 24"
-                           fill="none"
-                           stroke="currentColor"
-                           stroke-width="1.8"
-                           stroke-linecap="round"
-                           stroke-linejoin="round">
-                        <rect x="9" y="9" width="11" height="11" rx="2"></rect>
-                        <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
-                      </svg>
+                      <svg width="16" height="16"><use href="#icon-copy"></use></svg>
 
                       Copiar dirección
                     </button>
@@ -1319,17 +714,7 @@
 
               <div class="detail-row">
 
-                <svg class="detail-icon"
-                     viewBox="0 0 24 24"
-                     fill="none"
-                     stroke="currentColor"
-                     stroke-width="1.8"
-                     stroke-linecap="round"
-                     stroke-linejoin="round">
-                  <circle cx="12" cy="12" r="9"></circle>
-                  <path d="M3 12h18"></path>
-                  <path d="M12 3c2.5 2.4 3.5 5.4 3.5 9s-1 6.6-3.5 9c-2.5-2.4-3.5-5.4-3.5-9S9.5 5.4 12 3Z"></path>
-                </svg>
+                <svg class="detail-icon"><use href="#icon-globe"></use></svg>
 
                 <div class="detail-content">
 
@@ -1355,17 +740,7 @@
 
               <div class="detail-row">
 
-                <svg class="detail-icon"
-                     viewBox="0 0 24 24"
-                     fill="none"
-                     stroke="currentColor"
-                     stroke-width="1.8"
-                     stroke-linecap="round"
-                     stroke-linejoin="round">
-                  <circle cx="12" cy="12" r="9"></circle>
-                  <path d="M15 8.5c-.7-.6-1.7-1-3-1-1.7 0-3 .8-3 2s1.3 2 3 2 3 .8 3 2-1.3 2-3 2c-1.3 0-2.3-.4-3-1"></path>
-                  <path d="M12 6v12"></path>
-                </svg>
+                <svg class="detail-icon"><use href="#icon-euro"></use></svg>
 
                 <div class="detail-content">
                   <span class="detail-label">Precio total</span>
@@ -1376,14 +751,10 @@
 
 
               <!-- Historia -->
+
               <div class="detail-row">
 
-                <svg class="detail-icon"
-                  xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"
-                  fill="none">
-                  <path d="M12 6.90909C10.8999 5.50893 9.20406 4.10877 5.00119 4.00602C4.72513 3.99928 4.5 4.22351 4.5 4.49965C4.5 6.54813 4.5 14.3034 4.5 16.597C4.5 16.8731 4.72515 17.09 5.00114 17.099C9.20405 17.2364 10.8999 19.0998 12 20.5M12 6.90909C13.1001 5.50893 14.7959 4.10877 18.9988 4.00602C19.2749 3.99928 19.5 4.21847 19.5 4.49461C19.5 6.78447 19.5 14.3064 19.5 16.5963C19.5 16.8724 19.2749 17.09 18.9989 17.099C14.796 17.2364 13.1001 19.0998 12 20.5M12 6.90909L12 20.5" stroke="#000000" stroke-linejoin="round"/>
-                  <path d="M19.2353 6H21.5C21.7761 6 22 6.22386 22 6.5V19.539C22 19.9436 21.5233 20.2124 21.1535 20.0481C20.3584 19.6948 19.0315 19.2632 17.2941 19.2632C14.3529 19.2632 12 21 12 21C12 21 9.64706 19.2632 6.70588 19.2632C4.96845 19.2632 3.64156 19.6948 2.84647 20.0481C2.47668 20.2124 2 19.9436 2 19.539V6.5C2 6.22386 2.22386 6 2.5 6H4.76471" stroke="#000000" stroke-linejoin="round"/>
-                </svg>
+                <svg class="detail-icon"><use href="#icon-book"></use></svg>
 
                 <div class="detail-content">
                   <span class="detail-label">Historia</span>
@@ -1449,16 +820,7 @@
                   aria-label="Mostrar información"
                   onclick="toggleActivity(this)"
                 >
-                  <svg
-                    class="expand-icon"
-                    viewBox="0 0 24 24"
-                    fill="none"
-                    stroke-width="1.8"
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                  >
-                    <path d="m6 9 6 6 6-6"></path>
-                  </svg>
+                  <svg class="expand-icon"><use href="#icon-chevron"></use></svg>
                 </button>
 
               </div>
@@ -1472,16 +834,7 @@
 
               <div class="detail-row">
 
-                <svg class="detail-icon"
-                     viewBox="0 0 24 24"
-                     fill="none"
-                     stroke="currentColor"
-                     stroke-width="1.8"
-                     stroke-linecap="round"
-                     stroke-linejoin="round">
-                  <circle cx="12" cy="12" r="9"></circle>
-                  <path d="M12 7v5l3 2"></path>
-                </svg>
+                <svg class="detail-icon"><use href="#icon-clock"></use></svg>
 
                 <div class="detail-content">
 
@@ -1507,16 +860,7 @@
 
               <div class="detail-row">
 
-                <svg class="detail-icon"
-                     viewBox="0 0 24 24"
-                     fill="none"
-                     stroke="currentColor"
-                     stroke-width="1.8"
-                     stroke-linecap="round"
-                     stroke-linejoin="round">
-                  <path d="M20 10c0 5-8 11-8 11S4 15 4 10a8 8 0 1 1 16 0Z"></path>
-                  <circle cx="12" cy="10" r="2.5"></circle>
-                </svg>
+                <svg class="detail-icon"><use href="#icon-pin"></use></svg>
 
                 <div class="detail-content">
 
@@ -1551,17 +895,7 @@
                         this
                       )"
                     >
-                      <!-- Copiar -->
-                      <svg width="16" height="16"
-                           viewBox="0 0 24 24"
-                           fill="none"
-                           stroke="currentColor"
-                           stroke-width="1.8"
-                           stroke-linecap="round"
-                           stroke-linejoin="round">
-                        <rect x="9" y="9" width="11" height="11" rx="2"></rect>
-                        <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
-                      </svg>
+                      <svg width="16" height="16"><use href="#icon-copy"></use></svg>
 
                       Copiar dirección
                     </button>
@@ -1581,17 +915,7 @@
 
               <div class="detail-row">
 
-                <svg class="detail-icon"
-                     viewBox="0 0 24 24"
-                     fill="none"
-                     stroke="currentColor"
-                     stroke-width="1.8"
-                     stroke-linecap="round"
-                     stroke-linejoin="round">
-                  <circle cx="12" cy="12" r="9"></circle>
-                  <path d="M3 12h18"></path>
-                  <path d="M12 3c2.5 2.4 3.5 5.4 3.5 9s-1 6.6-3.5 9c-2.5-2.4-3.5-5.4-3.5-9S9.5 5.4 12 3Z"></path>
-                </svg>
+                <svg class="detail-icon"><use href="#icon-globe"></use></svg>
 
                 <div class="detail-content">
 
@@ -1617,17 +941,7 @@
 
               <div class="detail-row">
 
-                <svg class="detail-icon"
-                     viewBox="0 0 24 24"
-                     fill="none"
-                     stroke="currentColor"
-                     stroke-width="1.8"
-                     stroke-linecap="round"
-                     stroke-linejoin="round">
-                  <circle cx="12" cy="12" r="9"></circle>
-                  <path d="M15 8.5c-.7-.6-1.7-1-3-1-1.7 0-3 .8-3 2s1.3 2 3 2 3 .8 3 2-1.3 2-3 2c-1.3 0-2.3-.4-3-1"></path>
-                  <path d="M12 6v12"></path>
-                </svg>
+                <svg class="detail-icon"><use href="#icon-euro"></use></svg>
 
                 <div class="detail-content">
                   <span class="detail-label">Precio</span>
@@ -1641,16 +955,7 @@
 
               <div class="detail-row">
 
-                <svg class="detail-icon"
-                     viewBox="0 0 24 24"
-                     fill="none"
-                     stroke="currentColor"
-                     stroke-width="1.8"
-                     stroke-linecap="round"
-                     stroke-linejoin="round">
-                  <circle cx="12" cy="12" r="9"></circle>
-                  <path d="M12 7v5l3 2"></path>
-                </svg>
+                <svg class="detail-icon"><use href="#icon-clock"></use></svg>
 
                 <div class="detail-content">
 
@@ -1676,16 +981,7 @@
 
               <div class="detail-row">
 
-                <svg class="detail-icon"
-                     viewBox="0 0 24 24"
-                     fill="none"
-                     stroke="currentColor"
-                     stroke-width="1.8"
-                     stroke-linecap="round"
-                     stroke-linejoin="round">
-                  <path d="M20 10c0 5-8 11-8 11S4 15 4 10a8 8 0 1 1 16 0Z"></path>
-                  <circle cx="12" cy="10" r="2.5"></circle>
-                </svg>
+                <svg class="detail-icon"><use href="#icon-pin"></use></svg>
 
                 <div class="detail-content">
 
@@ -1720,17 +1016,7 @@
                         this
                       )"
                     >
-                      <!-- Copiar -->
-                      <svg width="16" height="16"
-                           viewBox="0 0 24 24"
-                           fill="none"
-                           stroke="currentColor"
-                           stroke-width="1.8"
-                           stroke-linecap="round"
-                           stroke-linejoin="round">
-                        <rect x="9" y="9" width="11" height="11" rx="2"></rect>
-                        <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
-                      </svg>
+                      <svg width="16" height="16"><use href="#icon-copy"></use></svg>
 
                       Copiar dirección
                     </button>
@@ -1750,17 +1036,7 @@
 
               <div class="detail-row">
 
-                <svg class="detail-icon"
-                     viewBox="0 0 24 24"
-                     fill="none"
-                     stroke="currentColor"
-                     stroke-width="1.8"
-                     stroke-linecap="round"
-                     stroke-linejoin="round">
-                  <circle cx="12" cy="12" r="9"></circle>
-                  <path d="M3 12h18"></path>
-                  <path d="M12 3c2.5 2.4 3.5 5.4 3.5 9s-1 6.6-3.5 9c-2.5-2.4-3.5-5.4-3.5-9S9.5 5.4 12 3Z"></path>
-                </svg>
+                <svg class="detail-icon"><use href="#icon-globe"></use></svg>
 
                 <div class="detail-content">
 
@@ -1786,17 +1062,7 @@
 
               <div class="detail-row">
 
-                <svg class="detail-icon"
-                     viewBox="0 0 24 24"
-                     fill="none"
-                     stroke="currentColor"
-                     stroke-width="1.8"
-                     stroke-linecap="round"
-                     stroke-linejoin="round">
-                  <circle cx="12" cy="12" r="9"></circle>
-                  <path d="M15 8.5c-.7-.6-1.7-1-3-1-1.7 0-3 .8-3 2s1.3 2 3 2 3 .8 3 2-1.3 2-3 2c-1.3 0-2.3-.4-3-1"></path>
-                  <path d="M12 6v12"></path>
-                </svg>
+                <svg class="detail-icon"><use href="#icon-euro"></use></svg>
 
                 <div class="detail-content">
                   <span class="detail-label">Precio</span>
@@ -1810,16 +1076,7 @@
 
               <div class="detail-row">
 
-                <svg class="detail-icon"
-                     viewBox="0 0 24 24"
-                     fill="none"
-                     stroke="currentColor"
-                     stroke-width="1.8"
-                     stroke-linecap="round"
-                     stroke-linejoin="round">
-                  <circle cx="12" cy="10" r="9"></circle>
-                  <path d="M12 7v5l3 2"></path>
-                </svg>
+                <svg class="detail-icon"><use href="#icon-clock"></use></svg>
 
                 <div class="detail-content">
 
@@ -1863,16 +1120,7 @@
                   aria-label="Mostrar información"
                   onclick="toggleActivity(this)"
                 >
-                  <svg
-                    class="expand-icon"
-                    viewBox="0 0 24 24"
-                    fill="none"
-                    stroke-width="1.8"
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                  >
-                    <path d="m6 9 6 6 6-6"></path>
-                  </svg>
+                  <svg class="expand-icon"><use href="#icon-chevron"></use></svg>
                 </button>
 
               </div>
@@ -1886,16 +1134,7 @@
 
               <div class="detail-row">
 
-                <svg class="detail-icon"
-                     viewBox="0 0 24 24"
-                     fill="none"
-                     stroke="currentColor"
-                     stroke-width="1.8"
-                     stroke-linecap="round"
-                     stroke-linejoin="round">
-                  <path d="M20 10c0 5-8 11-8 11S4 15 4 10a8 8 0 1 1 16 0Z"></path>
-                  <circle cx="12" cy="10" r="2.5"></circle>
-                </svg>
+                <svg class="detail-icon"><use href="#icon-pin"></use></svg>
 
                 <div class="detail-content">
 
@@ -1917,17 +1156,7 @@
                         this
                       )"
                     >
-                      <!-- Copiar -->
-                      <svg width="16" height="16"
-                           viewBox="0 0 24 24"
-                           fill="none"
-                           stroke="currentColor"
-                           stroke-width="1.8"
-                           stroke-linecap="round"
-                           stroke-linejoin="round">
-                        <rect x="9" y="9" width="11" height="11" rx="2"></rect>
-                        <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
-                      </svg>
+                      <svg width="16" height="16"><use href="#icon-copy"></use></svg>
 
                       Copiar dirección
                     </button>
@@ -1947,17 +1176,7 @@
 
               <div class="detail-row">
 
-                <svg class="detail-icon"
-                     viewBox="0 0 24 24"
-                     fill="none"
-                     stroke="currentColor"
-                     stroke-width="1.8"
-                     stroke-linecap="round"
-                     stroke-linejoin="round">
-                  <circle cx="12" cy="12" r="9"></circle>
-                  <path d="M3 12h18"></path>
-                  <path d="M12 3c2.5 2.4 3.5 5.4 3.5 9s-1 6.6-3.5 9c-2.5-2.4-3.5-5.4-3.5-9S9.5 5.4 12 3Z"></path>
-                </svg>
+                <svg class="detail-icon"><use href="#icon-globe"></use></svg>
 
                 <div class="detail-content">
 
@@ -1983,17 +1202,7 @@
 
               <div class="detail-row">
 
-                <svg class="detail-icon"
-                     viewBox="0 0 24 24"
-                     fill="none"
-                     stroke="currentColor"
-                     stroke-width="1.8"
-                     stroke-linecap="round"
-                     stroke-linejoin="round">
-                  <circle cx="12" cy="12" r="9"></circle>
-                  <path d="M15 8.5c-.7-.6-1.7-1-3-1-1.7 0-3 .8-3 2s1.3 2 3 2 3 .8 3 2-1.3 2-3 2c-1.3 0-2.3-.4-3-1"></path>
-                  <path d="M12 6v12"></path>
-                </svg>
+                <svg class="detail-icon"><use href="#icon-euro"></use></svg>
 
                 <div class="detail-content">
                   <span class="detail-label">Precio</span>
@@ -2007,16 +1216,7 @@
 
               <div class="detail-row">
 
-                <svg class="detail-icon"
-                     viewBox="0 0 24 24"
-                     fill="none"
-                     stroke="currentColor"
-                     stroke-width="1.8"
-                     stroke-linecap="round"
-                     stroke-linejoin="round">
-                  <circle cx="12" cy="12" r="9"></circle>
-                  <path d="M12 7v5l3 2"></path>
-                </svg>
+                <svg class="detail-icon"><use href="#icon-clock"></use></svg>
 
                 <div class="detail-content">
 
@@ -2085,26 +1285,181 @@
         class="day-section"
       >
 
-        <h2 class="section-title">
-          Información del alojamiento
-        </h2>
-
-        <p class="section-subtitle">
-          Información completa pendiente de añadir.
-        </p>
+        <div class="day-heading">
+          <div class="day-number">Alojamiento</div>
+          <div class="day-name">Apartamento La Muralla</div>
+        </div>
 
         <div class="accommodation-full">
 
-          <p class="placeholder">
-            Aquí añadiremos posteriormente toda la información
-            relevante del alojamiento.
-          </p>
+          <!-- Dirección -->
+
+          <div class="detail-row">
+
+            <svg class="detail-icon"><use href="#icon-pin"></use></svg>
+
+            <div class="detail-content">
+
+              <span class="detail-label">
+                Dirección
+              </span>
+
+              <span class="detail-value address">
+                Paseo Cubos 2 PISO 2ºB, 09003 Burgos, España
+              </span>
+
+              <div class="address-actions">
+
+                <a
+                  class="detail-button"
+                  href="https://www.google.com/maps/search/?api=1&query=Paseo+Cubos+2,+09003+Burgos,+Espa%C3%B1a"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  Ver en Google Maps
+                </a>
+
+                <button
+                  class="detail-button"
+                  type="button"
+                  onclick="copyAddress(
+                    'Paseo Cubos 2 PISO 2ºB, 09003 Burgos, España',
+                    this
+                  )"
+                >
+                  <svg width="16" height="16"><use href="#icon-copy"></use></svg>
+
+                  Copiar dirección
+                </button>
+
+                <span class="copy-message">
+                  Copiado
+                </span>
+
+              </div>
+
+            </div>
+
+          </div>
+
+
+          <!-- Entrada -->
+
+          <div class="detail-row">
+
+            <svg class="detail-icon"><use href="#icon-calendar"></use></svg>
+
+            <div class="detail-content">
+
+              <span class="detail-label">
+                Entrada
+              </span>
+
+              <span class="detail-value schedule">
+                sáb, 26 sep 2026<br/>
+                de 16:00 a 23:30
+              </span>
+
+            </div>
+
+          </div>
+
+
+          <!-- Salida -->
+
+          <div class="detail-row">
+
+            <svg class="detail-icon"><use href="#icon-calendar"></use></svg>
+
+            <div class="detail-content">
+
+              <span class="detail-label">
+                Salida
+              </span>
+
+              <span class="detail-value schedule">
+                lun, 28 sep 2026<br/>
+                de 05:00 a 12:00
+              </span>
+
+            </div>
+
+          </div>
+
+
+          <!-- Parking -->
+
+          <div class="detail-row">
+
+            <svg class="detail-icon"><use href="#icon-parking"></use></svg>
+
+            <div class="detail-content">
+
+              <span class="detail-label">
+                Parking
+              </span>
+
+              <span class="detail-value price">
+                Gratis
+              </span>
+
+            </div>
+
+          </div>
+
+
+          <!-- Precio -->
+
+          <div class="detail-row">
+
+            <svg class="detail-icon"><use href="#icon-euro"></use></svg>
+
+            <div class="detail-content">
+
+              <span class="detail-label">
+                Precio total
+              </span>
+
+              <span class="detail-value price">
+                277,20 €
+              </span>
+
+            </div>
+
+          </div>
+
+
+          <!-- Reserva -->
+
+          <div class="detail-row">
+
+            <svg class="detail-icon"><use href="#icon-calendar-check"></use></svg>
+
+            <div class="detail-content">
+
+              <span class="detail-label">
+                Reserva
+              </span>
+
+              <a
+                class="detail-button"
+                href="https://secure.booking.com/confirmation.html?auth_key=4BQBOJvBkcneH4Dx;aid=2311236;lang=es;source=mytrips"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                Ver reserva en Booking
+              </a>
+
+            </div>
+
+          </div>
 
         </div>
 
       </section>
 
     </main>
+
 
   </div>
 
@@ -2183,6 +1538,24 @@
 
 
     /*
+     * Muestra durante un instante el aviso "Copiado".
+     */
+    function showCopyMessage(button) {
+
+      const message =
+        button.parentElement.querySelector(".copy-message");
+
+      if (!message) return;
+
+      message.classList.add("visible");
+
+      setTimeout(() => {
+        message.classList.remove("visible");
+      }, 1800);
+    }
+
+
+    /*
      * Copia una dirección al portapapeles.
      */
     async function copyAddress(address, button) {
@@ -2190,19 +1563,6 @@
       try {
 
         await navigator.clipboard.writeText(address);
-
-        const message =
-          button.parentElement.querySelector(".copy-message");
-
-        if (message) {
-
-          message.classList.add("visible");
-
-          setTimeout(() => {
-            message.classList.remove("visible");
-          }, 1800);
-
-        }
 
       } catch (error) {
 
@@ -2229,20 +1589,9 @@
         }
 
         document.body.removeChild(textArea);
-
-        const message =
-          button.parentElement.querySelector(".copy-message");
-
-        if (message) {
-
-          message.classList.add("visible");
-
-          setTimeout(() => {
-            message.classList.remove("visible");
-          }, 1800);
-
-        }
       }
+
+      showCopyMessage(button);
     }
 
   </script>
