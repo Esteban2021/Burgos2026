@@ -379,7 +379,7 @@ section {
 
 .detail-divider {
   border: none;
-  border-top: 1px solid var(--border);
+  border-top: 2px solid var(--border);
   margin: 18px 0;
 }
 
@@ -400,6 +400,10 @@ section {
   color: var(--muted);
   font-size: 0.8rem;
   margin-bottom: 1px;
+}
+
+.detail-label.posible-visita-title {
+  font-weight: bold;
 }
 
 .detail-value {

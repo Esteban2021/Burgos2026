@@ -87,7 +87,7 @@ Definidos una sola vez al inicio de `<body>` dentro de un `<svg>` oculto (`width
 | `icon-calendar-check` | Reserva                                       |
 | `icon-menu`        | Menú                                             |
 | `icon-parking`     | Parking                                          |
-| `icon-cathedral`   | La catedral (posibles visitas)                   |
+| `icon-cathedral`   | La catedral / Monasterio de Las Huelgas (posibles visitas) |
 | `icon-castle`      | El castillo (posibles visitas)                   |
 | `icon-book`        | Historia (escape)                                |
 
@@ -179,7 +179,7 @@ copyAddress(address, button)
 
 | Día    | Fecha      | Estado                          |
 |--------|------------|---------------------------------|
-| 26 sep | sábado     | 4 actividades (posibles visitas, comida, freetour, escape) |
+| 26 sep | sábado     | 4 actividades (posibles visitas —catedral, castillo, Monasterio de Las Huelgas—, comida, freetour, escape) |
 | 27 sep | domingo    | 2 actividades (Atapuerca, Paleolitico Vivo) |
 | 28 sep | lunes      | Sin actividades añadidas        |
 | Aparc. | —          | Información sobre aparcamiento en Burgos (zona azul ORA + 3 parkings gratuitos) |
