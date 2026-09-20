@@ -145,6 +145,19 @@ a {
   background: var(--accent-light);
 }
 
+.nav-control-icon {
+  width: 21px;
+  height: 21px;
+  display: block;
+  margin: 0 auto;
+  stroke: currentColor;
+  transition: transform 0.2s ease;
+}
+
+#toggle-all.all-open .nav-control-icon {
+  transform: rotate(180deg);
+}
+
 /* =========================
    CONTENIDO
    ========================= */

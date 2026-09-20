@@ -86,6 +86,7 @@ Definidos una sola vez al inicio de `<body>` dentro de un `<svg>` oculto (`width
 | `icon-home`        | Casa (nav + tarjeta de alojamiento)              |
 | `icon-pin`         | Ubicación (Google Maps, dirección, alojamiento)  |
 | `icon-chevron`     | Flecha expandir/contraer actividad               |
+| `icon-chevron-double` | Doble flecha desplegar/contraer todo (nav)    |
 | `icon-globe`       | Web                                              |
 | `icon-euro`        | Precio                                           |
 | `icon-copy`        | Copiar dirección                                 |
@@ -109,7 +110,7 @@ Definidos una sola vez al inicio de `<body>` dentro de un `<svg>` oculto (`width
 ### 5.2. Navegación (`.top-nav`)
 - Enlaces `<a>` por día (`#dia-26`, `#dia-27`, `#dia-28`).
 - Ícono de casa (`#icon-home`) → `#alojamiento`.
-- Botón `#toggle-all` (`.nav-control`) → llama `toggleAllActivities(this)`.
+- Botón `#toggle-all` (`.nav-control`) → icono de doble flecha (`#icon-chevron-double`) que llama `toggleAllActivities(this)`. Rota 180° cuando todo está desplegado (`.all-open`).
 
 ### 5.3. Tarjeta de alojamiento (`.accommodation-card`)
 - Ícono (`#icon-home`), título, dirección.
@@ -152,7 +153,8 @@ toggleActivity(button)
 
 toggleAllActivities(button)
   // Si alguna actividad está cerrada → abre todas; si todas abiertas → cierra todas
-  // Cambia texto del botón: "Contraer todo" / "Desplegar todo"
+  // Alterna la clase .all-open en el botón (rota el icono de doble flecha 180°)
+  // y actualiza su aria-label
 
 showCopyMessage(button)
   // Muestra durante 1.8s el aviso "Copiado" (.copy-message.visible)
